@@ -224,8 +224,7 @@ void StopCharge()
 void Discover()
 {
     log("DiscoverVehicles called", "trace")
-    parent.getVehicleStatus(device, fullRefresh, false)
-    updateHtml()
+    parent.authorize()
 }
 
 ///
