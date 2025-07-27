@@ -20,6 +20,7 @@
  *  11/27/22 - Initial Canadian only version
  *  01/09/23 - Add command ForceRefresh to refresh the data bypassing the cache*
  *  01/14/24 - Add Battery Level
+ *  07/26/25 - Add Discover to call getVehicleStatus from the Canadian Hyundai Bluelink app for Hubitat @logname
  */
 
 String appVersion()   { return "1.2.1" }
@@ -72,9 +73,9 @@ metadata {
                 attribute "DoorLocks", "string"
                 attribute "Trunk", "string"
                 attribute "BatteryInCharge", "string"
-                attribute "BatteryPercent", "string"
+                attribute "BatteryPercent", "number"
                 attribute "BatteryTimeToCharge", "string"
-                attribute "BatteryLevel", "string"
+                attribute "BatteryLevel", "number"
                 attribute "ACLevel", "number"
                 attribute "ACRange", "number"
                 attribute "DCLevel", "number"
@@ -93,6 +94,7 @@ metadata {
                 command "StartCharge"
                 command "StopCharge"
                 command "ForceRefresh"
+                command "Discover"
             }
 
     preferences {
@@ -217,6 +219,13 @@ void StopCharge()
 {
     log("StopCharge called", "trace")
     parent.StopCharge(device)
+}
+
+void Discover()
+{
+    log("DiscoverVehicles called", "trace")
+    parent.getVehicleStatus(device, fullRefresh, false)
+    updateHtml()
 }
 
 ///
