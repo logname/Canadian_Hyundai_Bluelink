@@ -20,7 +20,7 @@
  *  11/27/22 - Initial Canadian only version
  *  01/09/23 - Add command ForceRefresh to refresh the data bypassing the cache*
  *  01/14/24 - Add Battery Level
- *  07/26/25 - Add Discover to call getVehicleStatus from the Canadian Hyundai Bluelink app for Hubitat @logname
+ *  07/26/25 - Add command Discover to call authorize from the Canadian Hyundai Bluelink app for Hubitat @logname
  */
 
 String appVersion()   { return "1.2.1" }
